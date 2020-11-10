@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\components",
+    "\\src\\app\\components\\modals",
+    "\\src\\app\\components\\modals\\login-modal",
+    "\\src\\app\\components\\shared",
+    "\\src\\app\\components\\shared\\navbar",
+    "\\src\\app\\core",
+    "\\src\\app\\core\\modals"
+  ],
+  "SelectedNode": "\\angular.json",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,39 @@
+<button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#loginModal" #loginModalButton></button>
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true" data-dismiss="modal">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="loginForm">
+          <div class="form-group">
+            <label class="form-check-label d-none" for="loginEmail">Enter email</label>
+            <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Podaj email" formControlName="email">
+            <div *ngIf="loginForm.controls.email.invalid && submitted" class="alert alert-danger">
+              Podaj poprawny email.
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-check-label d-none" for="loginPassword">Enter password</label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="Hasło" formControlName="password">
+          </div>
+          <div *ngIf="loginForm.controls.password.invalid && submitted" class="alert alert-danger">
+            Podaj poprawny email.
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="login()">Submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="openResetPassModal()" data-dismiss="modal">Nie pamiętasz hasła?</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="openRegisterModal()" data-dismiss="modal">Jeszcze nie masz konta? Zarejestruj się!</button>
+      </div>
+    </div>
+  </div>
+</div>
