@@ -8,10 +8,12 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 export const InterceptorSkipHeader = 'X-Skip-Interceptor';
 
 export class HttpErrorInterceptor implements HttpInterceptor {
   constructor(
+    private toastr: ToastrService
   ) {
   }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -24,17 +26,12 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       .pipe(
         retry(1),
         catchError((error: HttpErrorResponse) => {
-          let errorTitle = '';
           let errorMessage = '';
-          console.log(error);
           if (error.error) {
-            errorTitle = error.error.err;
-            errorMessage = error.error.desc;
-     
+            errorMessage = error.error;
+            this.toastr.error(errorMessage, 'Wystąpił błąd.');
           } else {
-            errorTitle = `Kod błędu: ${error.status}`;
             errorMessage = `Wiadomość: ${error.message}`;
-           
           }
           return throwError(errorMessage);
         })

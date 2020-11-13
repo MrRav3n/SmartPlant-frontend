@@ -4,7 +4,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Zaloguj się</h5>
         <button type="button" class="close" aria-label="Close">
           <span aria-hidden="true" data-dismiss="modal">&times;</span>
         </button>
@@ -12,27 +12,24 @@
       <div class="modal-body">
         <form [formGroup]="loginForm">
           <div class="form-group">
-            <label class="form-check-label d-none" for="loginEmail">Enter email</label>
+            <label class="form-check-label d-none" for="loginEmail">Wprowadź email</label>
             <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Podaj email" formControlName="email">
             <div *ngIf="loginForm.controls.email.invalid && submitted" class="alert alert-danger">
               Podaj poprawny email.
             </div>
           </div>
           <div class="form-group">
-            <label class="form-check-label d-none" for="loginPassword">Enter password</label>
+            <label class="form-check-label d-none" for="loginPassword">Wprowadź hasło</label>
             <input type="password" class="form-control" id="loginPassword" placeholder="Hasło" formControlName="password">
           </div>
           <div *ngIf="loginForm.controls.password.invalid && submitted" class="alert alert-danger">
-            Podaj poprawny email.
+            Podaj poprawne hasło.
           </div>
-          <button type="submit" class="btn btn-primary" (click)="login()">Submit</button>
+          <button type="submit" class="btn btn-primary" (click)="login()">Wyślij</button>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="openResetPassModal()" data-dismiss="modal">Nie pamiętasz hasła?</button>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="openRegisterModal()" data-dismiss="modal">Jeszcze nie masz konta? Zarejestruj się!</button>
+      <div class="registerDiv" (click)="openRegisterModal()" data-dismiss="modal">
+        Jeszcze nie masz konta? Zarejestruj się!
       </div>
     </div>
   </div>

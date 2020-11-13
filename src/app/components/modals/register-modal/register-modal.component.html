@@ -1,0 +1,50 @@
+<button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#registerModel" #registerModalButton></button>
+
+<div class="modal fade" id="registerModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Zarejestruj się</h5>
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true" data-dismiss="modal">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="registerForm">
+          <div class="form-group">
+            <label class="form-check-label d-none" for="firstNameReg">Wprowadź email</label>
+            <input type="email" class="form-control" id="firstNameReg" aria-describedby="emailHelp" placeholder="Imię" formControlName="firstName">
+            <div *ngIf="registerForm.controls.firstName.invalid && submitted" class="alert alert-danger">
+              Podaj poprawne imię.
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-check-label d-none" for="lastNameReg">Wprowadź email</label>
+            <input type="email" class="form-control" id="lastNameReg" aria-describedby="emailHelp" placeholder="Nazwisko" formControlName="lastName">
+            <div *ngIf="registerForm.controls.lastName.invalid && submitted" class="alert alert-danger">
+              Podaj poprawne nazwisko.
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-check-label d-none" for="registerEmail">Wprowadź email</label>
+            <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp" placeholder="Email" formControlName="email">
+            <div *ngIf="registerForm.controls.email.invalid && submitted" class="alert alert-danger">
+              Podaj poprawny email.
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-check-label d-none" for="registerPassword">Wprowadź hasło</label>
+            <input type="password" class="form-control" id="registerPassword" placeholder="Hasło" formControlName="password">
+          </div>
+          <div *ngIf="registerForm.controls.password.invalid && submitted" class="alert alert-danger">
+            Podaj poprawne hasło.
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="login()">Wyślij</button>
+        </form>
+      </div>
+      <div class="registerDiv" (click)="openLoginModal()" data-dismiss="modal">
+        Masz już konto? Zaloguj się!
+      </div>
+    </div>
+  </div>
+</div>

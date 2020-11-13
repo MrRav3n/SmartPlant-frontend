@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalsService } from '../../../core/modals/modals.service';
+import { MainService } from '../../../core/main/main.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,12 +10,19 @@ import { ModalsService } from '../../../core/modals/modals.service';
 export class NavbarComponent implements OnInit {
 
   constructor(
-    private modals: ModalsService
+    private modals: ModalsService,
+    public main: MainService
   ) { }
 
   ngOnInit(): void {
   }
-  login() {
+  loginOpen() {
     this.modals.openLoginEmit();
+  }
+  registerOpen() {
+    this.modals.openRegisterEmit();
+  }
+  logout() {
+    this.main.logout();
   }
 }

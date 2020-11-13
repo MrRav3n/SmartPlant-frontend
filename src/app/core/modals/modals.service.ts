@@ -6,10 +6,14 @@ import { EventEmitter } from '@angular/core';
 })
 export class ModalsService {
   openLogin = new EventEmitter();
+  openRegister = new EventEmitter();
 
   constructor() { }
 
   openLoginEmit() {
     this.openLogin.emit('');
+  }
+  openRegisterEmit() {
+    this.openRegister.emit('');
   }
 }
