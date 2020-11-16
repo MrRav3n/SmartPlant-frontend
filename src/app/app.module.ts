@@ -13,6 +13,10 @@ import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { RegisterModalComponent } from './components/modals/register-modal/register-modal.component';
 import { SpinnerComponent } from './components/shared/spinner/spinner.component';
 import { SharedService } from './core/shared/shared.service';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { PlantsComponent } from './components/plants/plants.component';
+import { DevicesComponent } from './components/devices/devices.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { SharedService } from './core/shared/shared.service';
     LoginModalComponent,
     NavbarComponent,
     RegisterModalComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    WelcomeComponent,
+    PlantsComponent,
+    DevicesComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
