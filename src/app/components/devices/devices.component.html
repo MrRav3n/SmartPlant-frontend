@@ -1,1 +1,6 @@
-<p>devices works!</p>
+<div *ngIf="devices">
+  <div *ngFor="let device of devices">
+    {{device.name}}
+  </div>
+
+</div>

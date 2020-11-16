@@ -1,8 +1,9 @@
 <app-spinner *ngIf="this.shared.loading"></app-spinner>
 <div class="p-0 m-0" *ngIf="!this.shared.loading">
   <app-navbar></app-navbar>
+  <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>
+
 
 <app-login-modal></app-login-modal>
 <app-register-modal></app-register-modal>

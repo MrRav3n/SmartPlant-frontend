@@ -53,7 +53,10 @@ import { MainPageComponent } from './components/main-page/main-page.component';
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
       multi: true,
-      deps: [ToastrService]
+      deps: [
+        ToastrService,
+        SharedService
+      ]
     }
   ],
   bootstrap: [AppComponent]

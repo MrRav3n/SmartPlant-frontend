@@ -63,10 +63,11 @@ export class MainService {
     });
   }
   loginViaToken() {
+    this.shared.loading = true;
     this.http.get<User>(this.apiUrl + 'user/loginViaToken', { headers: skip }).subscribe((res: User) => {
       this.user = res;
-      console.log(this.user);
       this.redirect();
+      this.shared.loading = false;
     });
   }
 
