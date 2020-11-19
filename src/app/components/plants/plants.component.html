@@ -1,1 +1,13 @@
-<p>plants works!</p>
+<div *ngIf="!plants[0]">
+  <div class="no-data">Niestety nie masz jeszcze żadnych roślin</div>
+</div>
+<div *ngIf="plants[0]">
+  <div class="devices">
+    <div *ngFor="let plant of plants; let i = index" class="single-device" (click)="nextStep(i)">
+      {{plant.name}}
+    </div>
+  </div>
+</div>
+
+
+

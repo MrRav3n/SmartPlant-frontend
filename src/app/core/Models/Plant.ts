@@ -3,4 +3,5 @@ export class Plant {
   name: string;
   level: number;
   deviceId: number;
+  plantType: number;
 }

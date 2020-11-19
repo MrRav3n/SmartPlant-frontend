@@ -5,14 +5,17 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { DevicesComponent } from './components/devices/devices.component';
 import { PlantsComponent } from './components/plants/plants.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { SinglePlantComponent } from './components/single-plant/single-plant.component';
 
 
 const routes: Routes = [
-  {path: '', component: WelcomeComponent},
+  {path: '', component: WelcomeComponent, canActivate: [!AuthGuard]},
   {path: 'logged', component: MainPageComponent, canActivate: [AuthGuard], children: [
       {path: '', component: DevicesComponent, pathMatch: 'full'},
-      {path: 'plants', component: PlantsComponent}
-    ]}
+      {path: 'plants/:id', component: PlantsComponent},
+      {path: 'plants/:id/:singleId', component: SinglePlantComponent},
+    ]},
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({

@@ -78,23 +78,38 @@ export class MainService {
       this.user.devices.push(res);
     });
   }
-  editDevice(editDevice) {
-    this.http.put(this.apiUrl + 'device' + editDevice.id, {name: editDevice.name}).subscribe((res: Device) => {
+  editDevice(editDevice: { id: number; name: string; index: number }) {
+    this.http.put(this.apiUrl + 'device/' + editDevice.id, {name: editDevice.name}).subscribe((res: Device) => {
       this.toastr.success('Pomyślnie edytowano.', 'Udało się!');
       this.user.devices[editDevice.index] = res;
     });
   }
   deleteDevice(id: number, index: number) {
-    this.http.delete(this.apiUrl + 'device' + id).subscribe((res: Device) => {
+    this.http.delete(this.apiUrl + 'device/' + id).subscribe((res: Device) => {
       this.toastr.success('Pomyślnie usunięto urządzenie.', 'Udało się!');
-      this.user.devices[index] = res;
+      this.user.devices.splice(index, 1);
     });
   }
-
   //  Plant
   addPlant(plant: Plant) {
     this.http.post(this.apiUrl + 'plant', plant).subscribe((res: Plant) => {
       this.toastr.success('Pomyślnie dodano nowe urządzenie.', 'Udało się!');
+      const i = this.user.devices.map(e => e.id).indexOf(plant.deviceId);
+      this.user.devices[i].plants.push(res);
+    });
+  }
+  deletePlant(id: number, index: number) {
+    this.http.delete(this.apiUrl + 'plant/' + id).subscribe((res: Plant) => {
+      this.toastr.success('Pomyślnie usunięto roślinę.', 'Udało się!');
+      const i = this.user.devices.map(e => e.id).indexOf(res.deviceId);
+      this.user.devices[i].plants.splice(index, 1);
+    });
+  }
+  editPlant(editPlant: { id: number; name: string; index: number }) {
+    this.http.put(this.apiUrl + 'device/' + editPlant.id, editPlant).subscribe((res: Plant) => {
+      this.toastr.success('Pomyślnie edytowano.', 'Udało się!');
+      const i = this.user.devices.map(e => e.id).indexOf(res.deviceId);
+      this.user.devices[i].plants[editPlant.index] = res;
     });
   }
 }

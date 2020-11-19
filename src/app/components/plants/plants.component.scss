@@ -1,0 +1,20 @@
+.devices {
+
+}
+.single-device {
+  cursor: pointer;
+  text-align: center;
+  padding: 25px;
+  font-size: 33px;
+  background: green;
+}
+.single-device:hover {
+  color: lightgreen;
+}
+.no-data {
+  cursor: pointer;
+  text-align: center;
+  padding: 25px;
+  font-size: 33px;
+  background: #ea9117;
+}

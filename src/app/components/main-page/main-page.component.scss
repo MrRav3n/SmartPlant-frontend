@@ -1,0 +1,21 @@
+.text-div {
+  background-color: #F8961E;
+  padding: 100px 0 100px 0;
+  text-align: center;
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  margin: 0;
+  font-size: 45px;
+}
+.devices {
+
+}
+.single-device {
+  cursor: pointer;
+  text-align: center;
+  padding: 25px;
+  font-size: 33px;
+  background: green;
+}
+.single-device:hover {
+  color: lightgreen;
+}

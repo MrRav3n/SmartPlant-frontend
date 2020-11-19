@@ -1,0 +1,13 @@
+<div *ngIf="!plant">
+  <div class="no-data">Niestety nie masz jeszcze żadnych roślin</div>
+</div>
+<div *ngIf="plant">
+  <div class="devices">
+    <div class="single-device">
+      {{plant.name}} Poziom: {{plant.level}} Rodzaj rośliny {{plant.plantType}}
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,6 +1,11 @@
-<div *ngIf="devices">
-  <div *ngFor="let device of devices">
-    {{device.name}}
-  </div>
+<div class="devices">
+      <div *ngFor="let device of devices; let i = index" class="single-device" >
+        <div class="" (click)="nextStep(i)">
+          {{device.name}}
+        </div>
+        <div (click)="delete(i)"><i class="fas fa-trash"></i></div>
+      </div>
 
 </div>
+
+

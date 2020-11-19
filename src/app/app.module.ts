@@ -17,6 +17,12 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { PlantsComponent } from './components/plants/plants.component';
 import { DevicesComponent } from './components/devices/devices.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
+import { SinglePlantComponent } from './components/single-plant/single-plant.component';
+import { EditDataModalComponent } from './components/modals/edit-data-modal/edit-data-modal.component';
+import { YouSureModalComponent } from './components/modals/you-sure-modal/you-sure-modal.component';
+import { AddDeviceModalComponent } from './components/modals/add-device-modal/add-device-modal.component';
+import { AddPlantModalComponent } from './components/modals/add-plant-modal/add-plant-modal.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +34,13 @@ import { MainPageComponent } from './components/main-page/main-page.component';
     WelcomeComponent,
     PlantsComponent,
     DevicesComponent,
-    MainPageComponent
+    MainPageComponent,
+    PageNotFoundComponent,
+    SinglePlantComponent,
+    EditDataModalComponent,
+    YouSureModalComponent,
+    AddDeviceModalComponent,
+    AddPlantModalComponent
   ],
   imports: [
     BrowserModule,
