@@ -1,0 +1,39 @@
+<button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#editPlantModal" #editPlantModal></button>
+
+<div class="modal fade" id="editPlantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edytuj urządzenie</h5>
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true" data-dismiss="modal">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editPlantForm">
+          <div class="form-group">
+            <label class="form-check-label d-none" for="editPlantName">Wprowadź nazwę</label>
+            <input type="text" class="form-control" id="editPlantName" aria-describedby="emailHelp" placeholder="Nowa nazwa" formControlName="name">
+            <div *ngIf="editPlantForm.controls.name.invalid && submitted" class="alert alert-danger">
+              Podaj poprawną nazwę.
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-check-label" for="levelEdit">Wybierz level</label>
+            <select class="form-control" id="levelEdit" formControlName="level">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div *ngIf="editPlantForm.controls.level.invalid && submitted" class="alert alert-danger">
+            Podaj poprawny poziom.
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="edit()" data-dismiss="modal">Edytuj</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

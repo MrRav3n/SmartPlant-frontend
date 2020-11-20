@@ -3,6 +3,7 @@ import { MainService } from '../../core/main/main.service';
 import { User } from '../../core/Models/User';
 import { Device } from '../../core/Models/Device';
 import { Router } from '@angular/router';
+import { ModalsService } from '../../core/modals/modals.service';
 
 @Component({
   selector: 'app-devices',
@@ -14,7 +15,8 @@ export class DevicesComponent implements OnInit, AfterViewInit {
   userName: string;
   constructor(
     private main: MainService,
-    private router: Router
+    private router: Router,
+    private modals: ModalsService
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +33,10 @@ export class DevicesComponent implements OnInit, AfterViewInit {
   delete(i) {
     const deviceId = this.devices[i].id;
     this.main.deleteDevice(deviceId, i);
+  }
+  edit(i) {
+    const deviceId = this.devices[i].id;
+    this.modals.openEditDeviceEmit(deviceId);
   }
 
 }

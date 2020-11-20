@@ -1,5 +1,6 @@
 <div class="row p-0 m-0 justify-content-center">
-  <div class="col-8 text-div" >
+  <app-navbar class="d-block d-md-none w-100"></app-navbar>
+  <div class="col-3 text-div m-0 d-none d-md-block">
     <div>
       Witaj {{this.user.firstName}}
     </div>
@@ -10,7 +11,7 @@
       Dodaj nowe
     </div>
   </div>
-  <div class="col-8">
+  <div class="col-md-9 col-12 m-0 p-0">
     <router-outlet></router-outlet>
   </div>
 </div>

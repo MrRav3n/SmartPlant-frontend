@@ -10,7 +10,8 @@ export class ModalsService {
   openAddDevice = new EventEmitter();
   openAddPlant = new EventEmitter();
   openYouSure = new EventEmitter();
-  openEdit = new EventEmitter();
+  openEditDevice = new EventEmitter();
+  openEditPlant = new EventEmitter();
 
   constructor() { }
 
@@ -26,8 +27,11 @@ export class ModalsService {
   openYouSureEmit() {
     this.openYouSure.emit('');
   }
-  openEditEmit() {
-    this.openEdit.emit('');
+  openEditDeviceEmit(id: number) {
+    this.openEditDevice.emit(id);
+  }
+  openEditPlantEmit(id: number, level: number) {
+    this.openEditPlant.emit({id, level});
   }
   openRegisterEmit() {
     this.openRegister.emit('');

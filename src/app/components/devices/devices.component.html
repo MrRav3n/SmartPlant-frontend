@@ -1,11 +1,12 @@
+<div class="col-12 text-desc">Twoje urządzenia</div>
 <div class="devices">
-      <div *ngFor="let device of devices; let i = index" class="single-device" >
-        <div class="" (click)="nextStep(i)">
+      <div *ngFor="let device of devices; let i = index" class="single-device row p-0 m-0" >
+        <div class="col-10 device-desc" (click)="nextStep(i)">
           {{device.name}}
         </div>
-        <div (click)="delete(i)"><i class="fas fa-trash"></i></div>
+        <div (click)="delete(i)" class="col-1 del-btn"><i class="fas fa-trash del-icon"></i></div>
+        <div (click)="edit(i)" class="col-1 settings-btn"><i class="fas fa-cog edit-icon"></i></div>
       </div>
-
 </div>
 
 

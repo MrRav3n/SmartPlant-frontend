@@ -2,7 +2,6 @@
   background-color: #F8961E;
   padding: 100px 0 100px 0;
   text-align: center;
-  clip-path: polygon(0 0, 100% 0, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   margin: 0;
   font-size: 45px;
 }
@@ -18,4 +17,12 @@
 }
 .single-device:hover {
   color: lightgreen;
+}
+
+
+@media (min-width: 992px) {
+  .text-div {
+    min-height: calc(100vh);
+    padding: 0;
+  }
 }

@@ -23,6 +23,7 @@ import { EditDataModalComponent } from './components/modals/edit-data-modal/edit
 import { YouSureModalComponent } from './components/modals/you-sure-modal/you-sure-modal.component';
 import { AddDeviceModalComponent } from './components/modals/add-device-modal/add-device-modal.component';
 import { AddPlantModalComponent } from './components/modals/add-plant-modal/add-plant-modal.component';
+import { EditPlantModalComponent } from './components/modals/edit-plant-modal/edit-plant-modal.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AddPlantModalComponent } from './components/modals/add-plant-modal/add-
     EditDataModalComponent,
     YouSureModalComponent,
     AddDeviceModalComponent,
-    AddPlantModalComponent
+    AddPlantModalComponent,
+    EditPlantModalComponent
   ],
   imports: [
     BrowserModule,
