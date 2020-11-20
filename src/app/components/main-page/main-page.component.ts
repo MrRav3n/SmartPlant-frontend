@@ -34,5 +34,7 @@ export class MainPageComponent implements OnInit {
     }
 
   }
-
+  logout() {
+    this.main.logout();
+  }
 }

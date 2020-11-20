@@ -82,7 +82,7 @@ export class MainService {
     this.http.put(this.apiUrl + 'device/' + editDevice.id, {name: editDevice.name}).subscribe((res: Device) => {
       this.toastr.success('Pomyślnie edytowano.', 'Udało się!');
       const i = this.user.devices.findIndex(x => x.id === res.id);
-      this.user.devices[i] = res;
+      this.user.devices[i].name = res.name;
     });
   }
   deleteDevice(id: number, index: number) {
@@ -106,11 +106,13 @@ export class MainService {
       this.user.devices[i].plants.splice(index, 1);
     });
   }
-  editPlant(editPlant: { id: number; name: string; index: number }) {
-    this.http.put(this.apiUrl + 'device/' + editPlant.id, editPlant).subscribe((res: Plant) => {
+  editPlant(editPlant) {
+    console.log(editPlant);
+    this.http.put(this.apiUrl + 'plant/' + editPlant.id, editPlant).subscribe((res: Plant) => {
       this.toastr.success('Pomyślnie edytowano.', 'Udało się!');
-      const i = this.user.devices.map(e => e.id).indexOf(res.deviceId);
-      this.user.devices[i].plants[editPlant.index] = res;
+      const iDev = this.user.devices.map(e => e.id).indexOf(res.deviceId);
+      const iPlan = this.user.devices[iDev].plants.map(e => e.id).indexOf(res.id);
+      this.user.devices[iDev].plants[iPlan] = res;
     });
   }
 }

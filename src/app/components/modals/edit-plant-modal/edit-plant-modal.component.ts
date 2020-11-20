@@ -20,10 +20,11 @@ export class EditPlantModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.modals.openEditPlant.subscribe((res) => {
-      this.editPlantModal.addControl('id', new FormControl(res.id, Validators.required));
+      this.editPlantForm.addControl('id', new FormControl(res.id, Validators.required));
+      this.editPlantForm.setControl('level', new FormControl(res.level, Validators.required));
       this.editPlantModal.nativeElement.click();
     });
-    this.editPlantModal = new FormGroup({
+    this.editPlantForm = new FormGroup({
       name: new FormControl('', Validators.required),
       level: new FormControl('', Validators.required),
     });
@@ -31,8 +32,8 @@ export class EditPlantModalComponent implements OnInit {
 
   edit() {
     this.submitted = true;
-    if (this.editPlantModal.valid) {
-      this.main.editPlant(this.editPlantModal.value);
+    if (this.editPlantForm.valid) {
+      this.main.editPlant(this.editPlantForm.value);
     }
   }
 }
