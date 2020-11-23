@@ -1,0 +1,29 @@
+.cover {
+  background-image: url("../../../assets/img/foresthd.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+.buttonsDiv {
+  padding: 50px;
+  background: white;
+  border-radius: 15px;
+}
+.centeredDiv {
+  margin-top: 150px;
+}
+.btnLogin {
+  font-size: 25px;
+  border-radius: 15px;
+  border: 2px solid black;
+  transition: 0.4s all ease;
+}
+.btnReg {
+  font-size: 18px;
+}
+.btnLogin:hover {
+  background: #515151;
+  border: 2px solid #515151;
+  color: white;
+}

@@ -1,18 +1,31 @@
 <div class="row p-0 m-0 justify-content-center">
   <app-navbar class="d-block d-md-none w-100"></app-navbar>
   <div class="col-3 text-div m-0 d-none d-md-block">
-    <div>
-      Witaj {{this.user.firstName}}
+    <div class="logoDiv">
+      <div class="imgDiv">
+        
+      </div>
+      <div class="row p-0 m-0 smallPanel">
+        <i class="fas fa-user-circle" style="margin-left: 100px; margin-top: 10px;"></i>
+        <div class="ml-4">
+          <div>  Witaj {{this.user.firstName}}</div>
+          <div style="font-size: 22px;">Panel sterowania</div>
+        </div>
+      </div>
+
     </div>
-    <div class="goBackBtn" (click)="goBack()">
-      Wróć
+    <div class="panelDiv h-100 mt-1">
+      <div class="goBackBtn" (click)="goBack()">
+        <i class="fas fa-arrow-alt-circle-left mr-4"></i>Wróć
+      </div>
+      <div class="add" (click)="add()">
+        <i class="fas fa-plus mr-4"></i>Dodaj nowe
+      </div>
+      <div class="add" (click)="logout()">
+        <i class="fas fa-sign-out-alt mr-4"></i>Wyloguj się
+      </div>
     </div>
-    <div class="add" (click)="add()">
-      Dodaj nowe
-    </div>
-    <div class="add" (click)="logout()">
-      Wyloguj się
-    </div>
+
 
   </div>
   <div class="col-md-9 col-12 m-0 p-0">

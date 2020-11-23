@@ -12,9 +12,11 @@ export class ModalsService {
   openYouSure = new EventEmitter();
   openEditDevice = new EventEmitter();
   openEditPlant = new EventEmitter();
-
+  sureConfirmation = new EventEmitter();
   constructor() { }
-
+  sureConfirmationEmit(x: boolean) {
+    this.sureConfirmation.emit(x);
+  }
   openLoginEmit() {
     this.openLogin.emit('');
   }

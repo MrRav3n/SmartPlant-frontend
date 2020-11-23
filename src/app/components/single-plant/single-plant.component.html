@@ -8,6 +8,37 @@
       Poziom: {{plant.level}} Rodzaj rośliny {{plant.plantType}}
     </div>
   </div>
+  <div class="chartDiv row p-0 m-0">
+    <div class="chartButtons col-4 flex-column row p-0 m-0 ">
+      <h1>Dane ostatniego pomiaru</h1>
+      <form [formGroup]="chartForm" class="row p-0 m-0">
+        <div class="form-group m-0 p-0 col-10">
+          <label class="form-check-label d-none" for="chartAmount">Wprowadź email</label>
+          <input type="email" class="form-control" id="chartAmount" aria-describedby="emailHelp" placeholder="Ilość pomiarów" formControlName="amount">
+
+        </div>
+        <span (click)="send()" class="col-2">
+          <i class="fas fa-search align-self-center" style="font-size: 25px;"></i>
+        </span>
+      </form>
+      <button  class="btn"></button>
+      <div *ngIf="this.measurements">
+        <button (click)="whatToShow('temperature')" class="btn btn-warning">
+          Temperatura: {{this.measurements[0].temperature}}
+        </button>
+        <button (click)="whatToShow('humidity')" class="btn btn-warning">
+          Wilgotność: {{this.measurements[0].humidity}}
+        </button>
+        <button (click)="whatToShow('weight')" class="btn btn-warning">
+          Waga: {{this.measurements[0].weight}}
+        </button>
+      </div>
+    </div>
+    <div class="singleChart col-8">
+      <canvas id="myChart" #chart></canvas>
+    </div>
+
+  </div>
 </div>
 
 

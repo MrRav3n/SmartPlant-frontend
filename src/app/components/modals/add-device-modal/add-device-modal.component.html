@@ -25,7 +25,9 @@
           <div *ngIf="addDeviceForm.controls.secretKey.invalid && submitted" class="alert alert-danger">
             Podaj poprawny klucz
           </div>
-          <button type="submit" class="btn btn-primary" (click)="add()" data-dismiss="modal">Wyślij</button>
+          <div class="row p-0 m-0 justify-content-center">
+            <button type="submit" class="btn btn-add col-6" (click)="add()">Dodaj!</button>
+          </div>
         </form>
       </div>
     </div>

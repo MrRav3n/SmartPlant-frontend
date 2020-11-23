@@ -8,6 +8,8 @@ import { InterceptorSkipHeader } from '../interceptor/http-error.interceptor';
 import { Device } from '../Models/Device';
 import { Plant } from '../Models/Plant';
 import { Router } from '@angular/router';
+import { Measurement } from '../Models/Measurement';
+import { Observable, Subscription } from 'rxjs';
 const skip = new HttpHeaders().set(InterceptorSkipHeader, '');
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,7 @@ const skip = new HttpHeaders().set(InterceptorSkipHeader, '');
 export class MainService {
   private user: User;
   apiUrl = 'https://api-smart-plant.herokuapp.com/api/';
+  sureSubscription: Subscription;
   constructor(
     private http: HttpClient,
     private shared: SharedService,
@@ -85,11 +88,25 @@ export class MainService {
       this.user.devices[i].name = res.name;
     });
   }
-  deleteDevice(id: number, index: number) {
-    this.http.delete(this.apiUrl + 'device/' + id).subscribe((res: Device) => {
-      this.toastr.success('Pomyślnie usunięto urządzenie.', 'Udało się!');
-      this.user.devices.splice(index, 1);
+  async deleteDevice(id: number, index: number) {
+    const sure = await this.checkIfSure();
+    if (sure) {
+      this.http.delete(this.apiUrl + 'device/' + id).subscribe((res: Device) => {
+        this.toastr.success('Pomyślnie usunięto urządzenie.', 'Udało się!');
+        this.user.devices.splice(index, 1);
+      });
+    }
+  }
+
+  async checkIfSure() {
+    this.modals.openYouSureEmit();
+    const conf = new Promise((resolve) => {
+      this.sureSubscription = this.modals.sureConfirmation.subscribe(x => {
+        this.sureSubscription.unsubscribe();
+        resolve(x);
+      });
     });
+    return await conf;
   }
   //  Plant
   addPlant(plant: Plant) {
@@ -99,20 +116,26 @@ export class MainService {
       this.user.devices[i].plants.push(res);
     });
   }
-  deletePlant(id: number, index: number) {
-    this.http.delete(this.apiUrl + 'plant/' + id).subscribe((res: Plant) => {
-      this.toastr.success('Pomyślnie usunięto roślinę.', 'Udało się!');
-      const i = this.user.devices.map(e => e.id).indexOf(res.deviceId);
-      this.user.devices[i].plants.splice(index, 1);
-    });
+  async deletePlant(id: number, index: number) {
+    const sure = await this.checkIfSure();
+    if (sure) {
+      this.http.delete(this.apiUrl + 'plant/' + id).subscribe((res: Plant) => {
+        this.toastr.success('Pomyślnie usunięto roślinę.', 'Udało się!');
+        const i = this.user.devices.map(e => e.id).indexOf(res.deviceId);
+        this.user.devices[i].plants.splice(index, 1);
+      });
+    }
   }
   editPlant(editPlant) {
-    console.log(editPlant);
     this.http.put(this.apiUrl + 'plant/' + editPlant.id, editPlant).subscribe((res: Plant) => {
       this.toastr.success('Pomyślnie edytowano.', 'Udało się!');
       const iDev = this.user.devices.map(e => e.id).indexOf(res.deviceId);
       const iPlan = this.user.devices[iDev].plants.map(e => e.id).indexOf(res.id);
       this.user.devices[iDev].plants[iPlan] = res;
     });
+  }
+  // Measurements
+  getMeasurements(id: number, amount: number): Observable<[Measurement]> {
+    return this.http.get<[Measurement]>(this.apiUrl + 'measurements/' + id + '/' + amount);
   }
 }

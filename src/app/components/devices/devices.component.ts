@@ -23,7 +23,6 @@ export class DevicesComponent implements OnInit, AfterViewInit {
 
   }
   ngAfterViewInit(): void {
-    console.log(this.main.getUser);
     this.devices = this.main.getUser.devices;
     this.userName = this.main.getUser.firstName;
   }

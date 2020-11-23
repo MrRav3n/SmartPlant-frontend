@@ -32,7 +32,6 @@ export class AddPlantModalComponent implements OnInit {
   }
   add() {
     this.submitted = true;
-    console.log(this.addPlantForm.valid);
     if (this.addPlantForm.valid) {
       this.main.addPlant(this.addPlantForm.value);
     }

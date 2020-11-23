@@ -5,8 +5,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Zaloguj się</h5>
-        <button type="button" class="close" aria-label="Close">
-          <span aria-hidden="true" data-dismiss="modal">&times;</span>
+        <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
@@ -21,15 +21,14 @@
           <div class="form-group">
             <label class="form-check-label d-none" for="loginPassword">Wprowadź hasło</label>
             <input type="password" class="form-control" id="loginPassword" placeholder="Hasło" formControlName="password">
+            <div *ngIf="loginForm.controls.password.invalid && submitted" class="alert alert-danger">
+              Podaj poprawne hasło.
+            </div>
           </div>
-          <div *ngIf="loginForm.controls.password.invalid && submitted" class="alert alert-danger">
-            Podaj poprawne hasło.
+          <div class="row p-0 m-0 justify-content-center">
+            <button type="submit" class="btn btn-login col-6" (click)="login()">Zaloguj się!</button>
           </div>
-          <button type="submit" class="btn btn-primary" (click)="login()">Wyślij</button>
         </form>
-      </div>
-      <div class="registerDiv" (click)="openRegisterModal()" data-dismiss="modal">
-        Jeszcze nie masz konta? Zarejestruj się!
       </div>
     </div>
   </div>

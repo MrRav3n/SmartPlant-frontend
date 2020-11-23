@@ -32,7 +32,7 @@ export class RegisterModalComponent implements OnInit {
     });
   }
 
-  login() {
+  register() {
     this.submitted = true;
     if (this.registerForm.valid) {
       this.main.register(this.registerForm.value);

@@ -1,24 +1,40 @@
 .text-div {
-  background-color: #F8961E;
   padding: 100px 0 100px 0;
-  text-align: center;
   margin: 0;
-  font-size: 45px;
 }
-.devices {
-
+.logoDiv {
+  font-size: 35px;
+  position: relative;
+  margin: 0;
+  background-color: var(--main);
+  min-height: 280px;
 }
-.single-device {
-  cursor: pointer;
+.imgDiv {
   text-align: center;
-  padding: 25px;
-  font-size: 33px;
-  background: green;
 }
-.single-device:hover {
-  color: lightgreen;
+.img-logo {
+  border-radius: 15px;
 }
-
+.panelDiv {
+  padding-left: 100px;
+  font-size: 25px;
+}
+.panelDiv > div {
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all ease 0.4s;
+}
+.panelDiv > div  i {
+  transition: all ease 0.5s;
+}
+.panelDiv > div:hover {
+  transform: scale(1.04);
+}
+.smallPanel {
+  width: 100%;
+  position: absolute;
+  bottom: 22px;
+}
 
 @media (min-width: 992px) {
   .text-div {

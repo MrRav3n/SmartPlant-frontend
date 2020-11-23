@@ -31,7 +31,9 @@
           <div *ngIf="editPlantForm.controls.level.invalid && submitted" class="alert alert-danger">
             Podaj poprawny poziom.
           </div>
-          <button type="submit" class="btn btn-primary" (click)="edit()" data-dismiss="modal">Edytuj</button>
+          <div class="row p-0 m-0 justify-content-center">
+            <button type="submit" class="btn btn-add col-6" (click)="edit()">Edytuj!</button>
+          </div>
         </form>
       </div>
     </div>

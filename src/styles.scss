@@ -1,10 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+  --main: #7EB356;
+}
 .text-desc {
-  background: #F8961E;
+  background: var(--main);
+  font-size: 33px;
+  padding: 15px 0 15px 0;
 }
 .del-btn {
   background-color: red !important;
 }
+.btn-login {
+  border-radius: 15px;
+  font-size: 19px;
+  background: #F9C74F;
+  transition: all ease 0.4s;
+}
+.btn-add {
+  border-radius: 15px;
+  font-size: 19px !important;
+  background: #90BE6D;
+  transition: all ease 0.4s;
+}
+.btn-add:hover {
+  background: #67c467;
+}
+.btn-login:hover {
+  background: #F8961E;
+}
 .settings-btn {
   background-color: cornflowerblue !important;
+}
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none;
+}
+.modal-title {
+  font-size: 25px;
+}
+.modal-content {
+  border-radius: 15px;
+}
+.modal-body .form-control {
+  height: 45px;
+}
+input {
+  font-size: 19px !important;
+}
+.close:focus, .close:active {
+  outline: none !important;
+  box-shadow: none;
 }
