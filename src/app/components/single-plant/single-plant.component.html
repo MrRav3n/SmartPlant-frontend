@@ -1,43 +1,59 @@
-<div class="col-12 text-desc">{{plant.name}}</div>
-<div *ngIf="!plant">
-  <div class="no-data">Niestety nie masz jeszcze żadnych roślin</div>
-</div>
-<div *ngIf="plant">
-  <div class="devices">
-    <div class="single-device">
-      Poziom: {{plant.level}} Rodzaj rośliny {{plant.plantType}}
+<div class="col-12 text-desc">Twoja roślina</div>
+<div class="chartDiv row m-2" [ngClass]="{'noBorder': !this.measurements?.length}">
+  <div class="chartButtons col-4 flex-column row p-0 m-0">
+    <div class="elementDesc mb-2 pr-2">
+      {{plant.name}}
+      <span style="float:right;">
+        Poziom: {{plant.level}}
+      </span>
     </div>
-  </div>
-  <div class="chartDiv row p-0 m-0">
-    <div class="chartButtons col-4 flex-column row p-0 m-0 ">
-      <h1>Dane ostatniego pomiaru</h1>
-      <form [formGroup]="chartForm" class="row p-0 m-0">
-        <div class="form-group m-0 p-0 col-10">
-          <label class="form-check-label d-none" for="chartAmount">Wprowadź email</label>
-          <input type="email" class="form-control" id="chartAmount" aria-describedby="emailHelp" placeholder="Ilość pomiarów" formControlName="amount">
+    <div *ngIf="this.measurements?.length">
+      <div class="measQues pr-2">
+        <div class="daneDiv mb-2">Ile pomiarów wczytać?</div>
+        <form [formGroup]="chartForm" class="row p-0 m-0">
+          <div class="form-group m-0 p-0 col-10">
+            <label class="form-check-label d-none" for="chartAmount">Wprowadź liczbę</label>
+            <input type="text" class="form-control" id="chartAmount" placeholder="Ilość pomiarów" formControlName="amount">
 
-        </div>
-        <span (click)="send()" class="col-2">
-          <i class="fas fa-search align-self-center" style="font-size: 25px;"></i>
-        </span>
-      </form>
-      <button  class="btn"></button>
-      <div *ngIf="this.measurements">
-        <button (click)="whatToShow('temperature')" class="btn btn-warning">
+          </div>
+          <button (click)="send()" class="col-2 btn btnMoreMeas">
+            <i class="fas fa-check align-self-center" style="font-size: 25px;"></i>
+          </button>
+        </form>
+      </div>
+
+      <div class="row p-0 m-0 lastMeasDiv pr-2">
+        <div class="daneDiv col-12 m-0 p-0">Ostatni pomiar</div>
+        <div class="lastMeas col-5">
           Temperatura: {{this.measurements[0].temperature}}
-        </button>
-        <button (click)="whatToShow('humidity')" class="btn btn-warning">
+        </div>
+        <div class="lastMeas col-5">
           Wilgotność: {{this.measurements[0].humidity}}
-        </button>
-        <button (click)="whatToShow('weight')" class="btn btn-warning">
+        </div>
+        <div class="lastMeas col-5">
           Waga: {{this.measurements[0].weight}}
-        </button>
+        </div>
       </div>
     </div>
-    <div class="singleChart col-8">
-      <canvas id="myChart" #chart></canvas>
+  </div>
+  <div class="noDataDiv col-12 m-0 p-0" *ngIf="!this.measurements?.length">
+    <div *ngIf="measurementsChecked">
+      <div class="noDataText m-0"><i class="fas fa-exclamation-triangle"></i> To urządzenie nie ma jeszcze żadnych pomiarów.</div>
     </div>
-
+  </div>
+  <div class="singleChart col-8">
+    <div *ngIf="this.measurements?.length" class="row m-0 p-0 justify-content-around">
+      <button (click)="whatToShow('temperature')" class="btn btnMeas" [ngClass]="{'activeBtn': currentlyShowing === 'temperature'}">
+        Temperatura
+      </button>
+      <button (click)="whatToShow('humidity')" class="btn btnMeas" [ngClass]="{'activeBtn': currentlyShowing === 'humidity'}">
+        Wilgotność
+      </button>
+      <button (click)="whatToShow('weight')" class="btn btnMeas" [ngClass]="{'activeBtn': currentlyShowing === 'weight'}">
+        Waga
+      </button>
+    </div>
+    <canvas id="myChart" #chart></canvas>
   </div>
 </div>
 

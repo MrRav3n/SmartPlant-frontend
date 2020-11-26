@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, OnInit, ViewChild } from '@angular/core';
 import { Plant } from '../../core/Models/Plant';
 import { MainService } from '../../core/main/main.service';
 import { ActivatedRoute } from '@angular/router';
@@ -20,6 +20,8 @@ export class SinglePlantComponent implements OnInit, AfterViewChecked {
   myChart;
   measurements: [Measurement];
   plant: Plant;
+  measurementsChecked = false;
+  currentlyShowing: string;
   constructor(
     private main: MainService,
     private route: ActivatedRoute
@@ -28,9 +30,14 @@ export class SinglePlantComponent implements OnInit, AfterViewChecked {
     const singleId = this.route.snapshot.paramMap.get('singleId');
     const id = this.route.snapshot.paramMap.get('id');
     this.plant = this.main.getUser.devices[id].plants[singleId];
+
     this.main.getMeasurements(this.plant.id, 8).subscribe(res => {
       this.measurements = res;
-      this.whatToShow('temperature');
+      if (res[0]) {
+        this.whatToShow('temperature');
+      } else {
+        this.measurementsChecked = true;
+      }
     });
     this.chartForm = new FormGroup({
       amount: new FormControl('', Validators.required),
@@ -44,15 +51,20 @@ export class SinglePlantComponent implements OnInit, AfterViewChecked {
     this.submitted = true;
     this.main.getMeasurements(this.plant.id, this.chartForm.controls.amount.value).subscribe(res => {
       this.measurements = res;
-      this.whatToShow('temperature');
+      if (res[0]) {
+        this.whatToShow('temperature');
+      } else {
+        this.measurementsChecked = true;
+      }
     });
   }
   whatToShow(nameOfVariable: string) {
+    this.currentlyShowing = nameOfVariable;
     if (this.myChart) {
       this.myChart.destroy();
     }
-    let data = [];
-    let labels = [];
+    const data = [];
+    const labels = [];
     this.measurements.map(x => {
       data.push(x[nameOfVariable]);
       const date = new Date();
@@ -74,6 +86,9 @@ export class SinglePlantComponent implements OnInit, AfterViewChecked {
         }]
       },
       options: {
+        legend: {
+          display: false
+        },
         responsive: true,
         display: true
       }

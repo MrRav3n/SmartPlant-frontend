@@ -1,12 +1,15 @@
 <div class="col-12 text-desc">Twoje urządzenia</div>
-<div class="devices">
-      <div *ngFor="let device of devices; let i = index" class="single-device row p-0 m-0" >
-        <div class="col-10 device-desc" (click)="nextStep(i)">
-          {{device.name}}
+<div class="elementsDiv" *ngIf="devices?.length">
+      <div *ngFor="let device of devices; let i = index" class="singleElement row p-0 m-0" >
+        <div class="col-10 elementDesc" (click)="nextStep(i)">
+          {{device.name}} <span class="idElement">id: {{device.id}}</span>
         </div>
-        <div (click)="delete(i)" class="col-1 del-btn"><i class="fas fa-trash del-icon"></i></div>
-        <div (click)="edit(i)" class="col-1 settings-btn"><i class="fas fa-cog edit-icon"></i></div>
+        <div (click)="delete(i)" class="col-1 del-btn text-center"><i class="fas fa-trash del-icon"></i></div>
+        <div (click)="edit(i)" class="col-1 settings-btn text-center"><i class="fas fa-cog edit-icon"></i></div>
       </div>
+</div>
+<div class="noDataDiv" *ngIf="!devices?.length">
+  <div class="noDataText"><i class="fas fa-exclamation-triangle"></i> Niestety nie masz jeszcze żadnych urządzeń.</div>
 </div>
 
 

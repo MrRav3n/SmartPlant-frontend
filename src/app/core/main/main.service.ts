@@ -49,7 +49,6 @@ export class MainService {
   }
   login(userCred) {
     this.http.post<User>(this.apiUrl + 'user/login', userCred).subscribe((res: User) => {
-      this.modals.openLoginEmit();
       localStorage.setItem('Token', res.token);
       this.user = res;
       console.log(this.user);
@@ -91,7 +90,7 @@ export class MainService {
   async deleteDevice(id: number, index: number) {
     const sure = await this.checkIfSure();
     if (sure) {
-      this.http.delete(this.apiUrl + 'device/' + id).subscribe((res: Device) => {
+      this.http.delete(this.apiUrl + 'device/' + id).subscribe(() => {
         this.toastr.success('Pomyślnie usunięto urządzenie.', 'Udało się!');
         this.user.devices.splice(index, 1);
       });

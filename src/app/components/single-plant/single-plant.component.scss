@@ -1,13 +1,49 @@
-.devices {
+.chartDiv {
+  border: 3px solid #577590;
+  padding: 10px;
+  border-radius: 15px;
+}
+.noBorder {
+  border: none !important;
+}
+.elementDesc {
+  border-bottom: 1px solid black;
+}
+.daneDiv{
+  font-size: 22px;
+}
+.activeBtn {
+  transform: scale(1.1);
+  background: #7EB356 !important;
+}
+.lastMeas {
+  border-radius: 15px;
+  padding: 7px;
+  font-size: 20px;
+  text-align: center;
+  background: #577590;
+  margin: 10px;
+}
+.btnMeas {
+  transition: all ease 0.3s;
+  color: white;
+  background: #577590;
+}
+.lastMeasDiv {
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid black;
+}
+.btnMoreMeas {
+  background: #7EB356 !important;
+  transition: all ease 0.3s;
+}
+.btnMoreMeas:hover {
+  background: #72ca33 !important;
+}
+.fa-search {
 
 }
-.single-device {
-  cursor: pointer;
-  text-align: center;
-  padding: 25px;
-  font-size: 33px;
-  background: green;
-}
-.single-device:hover {
-  color: lightgreen;
+.chartButtons {
+  border-right: 1px solid black;
 }

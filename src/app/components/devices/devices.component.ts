@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MainService } from '../../core/main/main.service';
-import { User } from '../../core/Models/User';
 import { Device } from '../../core/Models/Device';
 import { Router } from '@angular/router';
 import { ModalsService } from '../../core/modals/modals.service';
@@ -12,7 +11,6 @@ import { ModalsService } from '../../core/modals/modals.service';
 })
 export class DevicesComponent implements OnInit, AfterViewInit {
   devices: [Device];
-  userName: string;
   constructor(
     private main: MainService,
     private router: Router,
@@ -24,7 +22,7 @@ export class DevicesComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit(): void {
     this.devices = this.main.getUser.devices;
-    this.userName = this.main.getUser.firstName;
+    console.log(!this.devices[0]);
   }
   nextStep(i: number) {
     this.router.navigateByUrl(`logged/plants/${i}`);

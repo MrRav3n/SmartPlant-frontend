@@ -1,12 +1,12 @@
-<button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#youSureModal" #youSureModal></button>
+<button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#youSureModal" #youSureModal data-backdrop="static" data-keyboard="false"></button>
 
 <div class="modal fade" id="youSureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-body">
-        <h1>Jesteś pewny?</h1>
-        <button class="btn" (click)="sureCheck(true)" data-dismiss="modal">Tak chcę to zrobić.</button>
-        <button class="btn" (click)="sureCheck(false)" data-dismiss="modal">Pomyliłem się.</button>
+      <div class="modal-body row p-3 m-0 justify-content-around">
+        <h2 class="text-center col-12 mb-4">Jesteś pewny?</h2>
+        <button class="btn btn-yes" (click)="sureCheck(true)" data-dismiss="modal">Tak chcę to zrobić.</button>
+        <button class="btn btn-no" (click)="sureCheck(false)" data-dismiss="modal">Pomyliłem się.</button>
       </div>
     </div>
   </div>

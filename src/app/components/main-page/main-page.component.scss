@@ -3,21 +3,22 @@
   margin: 0;
 }
 .logoDiv {
-  font-size: 35px;
+  font-size: 30px;
   position: relative;
   margin: 0;
   background-color: var(--main);
   min-height: 280px;
 }
 .imgDiv {
-  text-align: center;
+ margin-left: 100px;
+ padding-top: 20px;
 }
 .img-logo {
-  border-radius: 15px;
+  border-radius: 25px;
 }
 .panelDiv {
   padding-left: 100px;
-  font-size: 25px;
+  font-size: 21px;
 }
 .panelDiv > div {
   cursor: pointer;

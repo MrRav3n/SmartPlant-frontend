@@ -1,18 +1,18 @@
 <div class="col-12 text-desc">Rośliny</div>
-<div *ngIf="!plants[0]">
-  <div class="no-data">Niestety nie masz jeszcze żadnych roślin</div>
-</div>
-<div *ngIf="plants[0]">
-  <div class="devices">
-    <div *ngFor="let plant of plants; let i = index" class="single-device row p-0 m-0" >
-      <div class="col-10 device-desc" (click)="nextStep(i)">
-        {{plant.name}}
-      </div>
-      <div (click)="delete(i)" class="col-1 del-btn"><i class="fas fa-trash del-icon"></i></div>
-      <div (click)="edit(i)" class="col-1 settings-btn"><i class="fas fa-cog edit-icon"></i></div>
+<div class="elementsDiv" *ngIf="plants?.length">
+  <div *ngFor="let plant of plants; let i = index" class="singleElement row p-0" >
+    <div class="col-10 elementDesc" (click)="nextStep(i)">
+      {{plant.name}} <span class="idElement">id: {{plant.id}}</span> <span style="text-align: right"> Poziom: {{plant.level}}</span>
     </div>
+    <div (click)="delete(i)" class="col-1 del-btn text-center"><i class="fas fa-trash del-icon"></i></div>
+    <div (click)="edit(i)" class="col-1 settings-btn text-center"><i class="fas fa-cog edit-icon"></i></div>
   </div>
 </div>
+<div class="noDataDiv" *ngIf="!plants?.length">
+  <div class="noDataText"><i class="fas fa-exclamation-triangle"></i> Niestety nie masz jeszcze żadnych roślin.</div>
+</div>
+
+
 
 
 

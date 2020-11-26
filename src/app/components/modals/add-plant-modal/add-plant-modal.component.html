@@ -11,12 +11,6 @@
       </div>
       <div class="modal-body">
         <form [formGroup]="addPlantForm">
-          <div class="form-group" *ngIf="devices">
-            <label class="form-check-label" for="deviceId">Wybierz urządzenie</label>
-            <select class="form-control" id="deviceId" formControlName="deviceId">
-              <option *ngFor="let device of devices" value="{{device.id}}">{{device.name}}</option>
-            </select>
-          </div>
           <div class="form-group">
             <label class="form-check-label d-none" for="nameAddPlant">Wprowadź nazwę</label>
             <input type="email" class="form-control" id="nameAddPlant" aria-describedby="emailHelp" placeholder="Podaj nazwę" formControlName="name">
@@ -25,7 +19,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-check-label" for="level">Wybierz level</label>
+            <label class="form-check-label mb-2" for="level">Wybierz level</label>
             <select class="form-control" id="level" formControlName="level">
               <option>1</option>
               <option>2</option>
@@ -38,7 +32,7 @@
             Podaj poprawny poziom.
           </div>
           <div class="row p-0 m-0 justify-content-center">
-            <button type="submit" class="btn btn-add col-6" (click)="add()">Dodaj!</button>
+            <button type="submit" class="btn btn-add col-6" (click)="add()" data-dismiss="modal">Dodaj!</button>
           </div>
         </form>
       </div>

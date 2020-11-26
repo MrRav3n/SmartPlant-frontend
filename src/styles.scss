@@ -4,11 +4,11 @@ html {
 }
 .text-desc {
   background: var(--main);
-  font-size: 33px;
+  font-size: 23px;
   padding: 15px 0 15px 0;
 }
 .del-btn {
-  background-color: red !important;
+  background-color: #F94144 !important;
 }
 .btn-login {
   border-radius: 15px;
@@ -29,7 +29,7 @@ html {
   background: #F8961E;
 }
 .settings-btn {
-  background-color: cornflowerblue !important;
+  background-color: #277DA1 !important;
 }
 .btn:focus, .btn:active {
   outline: none !important;
@@ -50,4 +50,35 @@ input {
 .close:focus, .close:active {
   outline: none !important;
   box-shadow: none;
+}
+.elementsDiv {
+  margin: 10px;
+}
+.singleElement {
+  margin: 0 0 10px 0;
+  transition: all ease 0.4s;
+  border: 3px solid #F7B926;
+  border-radius: 7px;
+  cursor: pointer;
+  padding: 25px;
+  font-size: 33px;
+  background: #FCE5B0;
+}
+.noDataDiv {
+  padding: -50px;
+  margin: 15px;
+}
+.noDataText {
+  font-size: 25px;
+  color: #F94144;
+}
+.idElement {
+  font-size: 17px;
+  color: #9f9f9f;
+}
+.elementDesc {
+  font-size: 28px;
+}
+.singleElement:hover {
+  background: #ffd773;
 }
