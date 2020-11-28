@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalsService } from '../../../core/modals/modals.service';
 import { MainService } from '../../../core/main/main.service';
+import { User } from '../../../core/Models/User';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,19 +11,28 @@ import { MainService } from '../../../core/main/main.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
+  user: User;
   constructor(
     private modals: ModalsService,
-    public main: MainService
+    public main: MainService,
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.user = this.main.getUser;
   }
-  loginOpen() {
-    this.modals.openLoginEmit();
+  goBack() {
+    this.location.back();
   }
-  registerOpen() {
-    this.modals.openRegisterEmit();
+  add() {
+    const url = this.router.url.split('/');
+    if (!url[2]) {
+      this.modals.openAddDeviceEmit();
+    } else {
+      this.modals.openAddPlantEmit();
+    }
+
   }
   logout() {
     this.main.logout();

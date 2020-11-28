@@ -1,14 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 html {
   --main: #7EB356;
+  --mainHover: #72ca33;
+  --second: #FCE5B0;
+  --secondHover: #FCE5B0;
+  --dgr: #F94144;
+  --third: #577590 !important;
 }
 .text-desc {
   background: var(--main);
   font-size: 23px;
   padding: 15px 0 15px 0;
 }
+@media(max-width: 992px) {
+  .text-desc {
+    background: #5c853c;
+    padding: 10px 0 10px 10px;
+    font-size: 18px;
+  }
+}
 .del-btn {
-  background-color: #F94144 !important;
+  background-color: var(--dgr) !important;
 }
 .btn-login {
   border-radius: 15px;
@@ -19,11 +31,11 @@ html {
 .btn-add {
   border-radius: 15px;
   font-size: 19px !important;
-  background: #90BE6D;
+  background: var(--main);
   transition: all ease 0.4s;
 }
 .btn-add:hover {
-  background: #67c467;
+  background: var(--mainHover);
 }
 .btn-login:hover {
   background: #F8961E;
@@ -62,7 +74,7 @@ input {
   cursor: pointer;
   padding: 25px;
   font-size: 33px;
-  background: #FCE5B0;
+  background: var(--second);
 }
 .noDataDiv {
   padding: -50px;
@@ -70,7 +82,7 @@ input {
 }
 .noDataText {
   font-size: 25px;
-  color: #F94144;
+  color: var(--dgr);
 }
 .idElement {
   font-size: 17px;
@@ -80,5 +92,13 @@ input {
   font-size: 28px;
 }
 .singleElement:hover {
-  background: #ffd773;
+  background: var(--secondHover);
+}
+@media (max-width: 992px) {
+  .smallBtn {
+    font-size: 23px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

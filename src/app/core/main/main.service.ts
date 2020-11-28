@@ -48,20 +48,24 @@ export class MainService {
     this.redirect();
   }
   login(userCred) {
+    this.shared.loading = true;
     this.http.post<User>(this.apiUrl + 'user/login', userCred).subscribe((res: User) => {
       localStorage.setItem('Token', res.token);
       this.user = res;
       console.log(this.user);
       this.redirect();
+      this.shared.loading = false;
     });
   }
   register(userCred) {
+    this.shared.loading = true;
     this.http.post<User>(this.apiUrl + 'user/register', userCred).subscribe((res: User) => {
       this.modals.openRegisterEmit();
       this.toastr.success('Pomyślnie zarejestorwano.', 'Udało się!');
       this.user = res;
       console.log(this.user);
       this.redirect();
+      this.shared.loading = false;
     });
   }
   loginViaToken() {

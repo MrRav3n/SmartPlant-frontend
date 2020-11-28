@@ -21,7 +21,7 @@ export class SinglePlantComponent implements OnInit, AfterViewChecked {
   measurements: [Measurement];
   plant: Plant;
   measurementsChecked = false;
-  currentlyShowing: string;
+  currentlyShowing = 'temperature';
   constructor(
     private main: MainService,
     private route: ActivatedRoute
@@ -32,11 +32,10 @@ export class SinglePlantComponent implements OnInit, AfterViewChecked {
     this.plant = this.main.getUser.devices[id].plants[singleId];
 
     this.main.getMeasurements(this.plant.id, 8).subscribe(res => {
+      this.measurementsChecked = true;
       this.measurements = res;
       if (res[0]) {
-        this.whatToShow('temperature');
-      } else {
-        this.measurementsChecked = true;
+        this.whatToShow(this.currentlyShowing);
       }
     });
     this.chartForm = new FormGroup({
@@ -51,11 +50,7 @@ export class SinglePlantComponent implements OnInit, AfterViewChecked {
     this.submitted = true;
     this.main.getMeasurements(this.plant.id, this.chartForm.controls.amount.value).subscribe(res => {
       this.measurements = res;
-      if (res[0]) {
-        this.whatToShow('temperature');
-      } else {
-        this.measurementsChecked = true;
-      }
+      this.whatToShow(this.currentlyShowing);
     });
   }
   whatToShow(nameOfVariable: string) {
@@ -65,11 +60,12 @@ export class SinglePlantComponent implements OnInit, AfterViewChecked {
     }
     const data = [];
     const labels = [];
-    this.measurements.map(x => {
-      data.push(x[nameOfVariable]);
+    const index = this.measurements.length - 1;
+    for (let i = index; i >= 0; i--) {
+      data.push(this.measurements[i][nameOfVariable]);
       const date = new Date();
       labels.push(date.toLocaleTimeString());
-    });
+    }
     const config = {
       type: 'line',
       data: {

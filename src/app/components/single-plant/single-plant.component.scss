@@ -1,13 +1,14 @@
 .chartDiv {
+  background: var(--second);
   border: 3px solid #577590;
   padding: 10px;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 .noBorder {
   border: none !important;
 }
 .elementDesc {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--third);
 }
 .daneDiv{
   font-size: 22px;
@@ -17,33 +18,52 @@
   background: #7EB356 !important;
 }
 .lastMeas {
+  color: white;
   border-radius: 15px;
   padding: 7px;
   font-size: 20px;
   text-align: center;
-  background: #577590;
+  background: var(--third);
   margin: 10px;
 }
 .btnMeas {
   transition: all ease 0.3s;
-  color: white;
-  background: #577590;
+  color: #ffffff;
+  background: var(--third);
+}
+.noHeight {
+  height: 0;
 }
 .lastMeasDiv {
   position: absolute;
   bottom: 0;
-  border-top: 1px solid black;
+  border-top: 1px solid var(--third);
 }
 .btnMoreMeas {
-  background: #7EB356 !important;
+  background: var(--main) !important;
   transition: all ease 0.3s;
 }
 .btnMoreMeas:hover {
-  background: #72ca33 !important;
-}
-.fa-search {
-
+  background: var(--mainHover) !important;
 }
 .chartButtons {
-  border-right: 1px solid black;
+  border-right: 1px solid var(--third);
+}
+@media(max-width: 992px) {
+  .lastMeasDiv {
+    position: static;
+  }
+  .chartButtons {
+    border-right: none;
+  }
+  .measQues {
+    padding-bottom: 10px;
+  }
+  .lastMeasDiv {
+    border-bottom: 1px solid var(--third);
+    padding-bottom: 10px;
+  }
+  .singleChart {
+    margin-top: 15px;
+  }
 }

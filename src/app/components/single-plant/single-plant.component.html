@@ -1,6 +1,6 @@
 <div class="col-12 text-desc">Twoja roślina</div>
-<div class="chartDiv row m-2" [ngClass]="{'noBorder': !this.measurements?.length}">
-  <div class="chartButtons col-4 flex-column row p-0 m-0">
+<div class="chartDiv row m-2">
+  <div class="chartButtons col-lg-4 flex-column row p-0 m-0" [ngClass]="{'noBorder': !this.measurements?.length}">
     <div class="elementDesc mb-2 pr-2">
       {{plant.name}}
       <span style="float:right;">
@@ -21,7 +21,6 @@
           </button>
         </form>
       </div>
-
       <div class="row p-0 m-0 lastMeasDiv pr-2">
         <div class="daneDiv col-12 m-0 p-0">Ostatni pomiar</div>
         <div class="lastMeas col-5">
@@ -38,18 +37,18 @@
   </div>
   <div class="noDataDiv col-12 m-0 p-0" *ngIf="!this.measurements?.length">
     <div *ngIf="measurementsChecked">
-      <div class="noDataText m-0"><i class="fas fa-exclamation-triangle"></i> To urządzenie nie ma jeszcze żadnych pomiarów.</div>
+      <div class="noDataText m-0"><i class="fas fa-exclamation-triangle"></i>Ta roślina nie ma jeszcze żadnych pomiarów.</div>
     </div>
   </div>
-  <div class="singleChart col-8">
+  <div class="singleChart col-lg-8 col-12" [ngClass]="{'noHeight': !this.measurements?.length}">
     <div *ngIf="this.measurements?.length" class="row m-0 p-0 justify-content-around">
-      <button (click)="whatToShow('temperature')" class="btn btnMeas" [ngClass]="{'activeBtn': currentlyShowing === 'temperature'}">
+      <button (click)="whatToShow('temperature')" class="btn btnMeas col-5 col-lg-auto" [ngClass]="{'activeBtn': currentlyShowing === 'temperature'}">
         Temperatura
       </button>
-      <button (click)="whatToShow('humidity')" class="btn btnMeas" [ngClass]="{'activeBtn': currentlyShowing === 'humidity'}">
+      <button (click)="whatToShow('humidity')" class="btn btnMeas col-5 col-lg-auto" [ngClass]="{'activeBtn': currentlyShowing === 'humidity'}">
         Wilgotność
       </button>
-      <button (click)="whatToShow('weight')" class="btn btnMeas" [ngClass]="{'activeBtn': currentlyShowing === 'weight'}">
+      <button (click)="whatToShow('weight')" class="btn btnMeas col-5 col-lg-auto mt-2 mt-lg-0" [ngClass]="{'activeBtn': currentlyShowing === 'weight'}">
         Waga
       </button>
     </div>

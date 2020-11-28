@@ -1,11 +1,11 @@
 <div class="col-12 text-desc">Rośliny</div>
 <div class="elementsDiv" *ngIf="plants?.length">
   <div *ngFor="let plant of plants; let i = index" class="singleElement row p-0" >
-    <div class="col-10 elementDesc" (click)="nextStep(i)">
+    <div class="col-lg-10 col-8 elementDesc" (click)="nextStep(i)">
       {{plant.name}} <span class="idElement">id: {{plant.id}}</span> <span style="text-align: right"> Poziom: {{plant.level}}</span>
     </div>
-    <div (click)="delete(i)" class="col-1 del-btn text-center"><i class="fas fa-trash del-icon"></i></div>
-    <div (click)="edit(i)" class="col-1 settings-btn text-center"><i class="fas fa-cog edit-icon"></i></div>
+    <div (click)="delete(i)" class="col-lg-1 col-2 del-btn text-center smallBtn"><i class="fas fa-trash del-icon"></i></div>
+    <div (click)="edit(i)" class="col-lg-1 col-2 settings-btn text-center smallBtn"><i class="fas fa-cog edit-icon"></i></div>
   </div>
 </div>
 <div class="noDataDiv" *ngIf="!plants?.length">
